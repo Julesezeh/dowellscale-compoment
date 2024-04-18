@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const npxScale = () => {
+const NpxScale = () => {
   const [loadingIndex, setLoadingIndex] = useState(null);
   const [responseReceived, setResponseReceived] = useState(false);
 
@@ -49,4 +49,4 @@ const npxScale = () => {
   );
 };
 
-export default npxScale;
+export default NpxScale;
