@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const NpxScale = () => {
+const NpxScale = (props) => {
   const [loadingIndex, setLoadingIndex] = useState(null);
   const [responseReceived, setResponseReceived] = useState(false);
 
@@ -11,7 +11,7 @@ const NpxScale = () => {
     setLoadingIndex(index);
     try {
       const response = await axios.get(
-        `https://100035.pythonanywhere.com/addons/create-response/?workspace_id=${workspace_id}&username=${username}&scale_id=${scale_id}&item=${index}`
+        `https://100035.pythonanywhere.com/addons/create-response/?workspace_id=${props.workspace_id}&username=${props.username}&scale_id=${props.scale_id}&item=${index}`
       );
       console.log(response);
       setResponseReceived(true);
@@ -36,7 +36,7 @@ const NpxScale = () => {
             <button
               key={index}
               className="button"
-              style={{ backgroundColor: buttonColor }}
+              style={{ backgroundColor: props.buttonColor }}
               onClick={() => handleButtonClick(index)}
               disabled={loadingIndex === index}
             >

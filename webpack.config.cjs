@@ -2,11 +2,14 @@ const path = require('path');
 
 module.exports = {
     mode: "production",
-    entry: path.resolve(__dirname, "./src/main.jsx"),
+    entry: "./src/App.jsx",
     output: {
         path: path.resolve("build"),
         filename: "index.js",
-        libraryTarget: "commonjs2"
+        libraryTarget: "commonjs2",
+        library: 'RatingScale',
+        libraryTarget: 'umd'
+
     },
     resolve: {
         modules: [path.resolve(__dirname, 'node_modules'), 'src'],

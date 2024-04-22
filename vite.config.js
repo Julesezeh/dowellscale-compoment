@@ -1,17 +1,22 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import path from 'path'
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  test: {
-    environment: 'jsdom',
-    coverage: {
-      reporter: ['text', 'json', 'html'],
+  build: {
+    lib: {
+      entry: path.resolve("src", 'App.jsx'),
+      name: 'dowellscale-component',
+      fileName: (format) => `dowellscale-component.${format}.js`
     },
-    threads: false, // suppresses errors from canvas when starting tests
-    deps: {
-      inline: ['@jdlien/validator-utils'],
-    },
+    rollupOptions: {
+      external: ['react', 'react-dom'],
+      output: {
+        globals: {
+          react: 'React'
+        }
+      }
+    }
   },
-});
+  plugins: [react()]
+})
